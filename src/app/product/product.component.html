@@ -1,1 +1,105 @@
 <p>product works!</p>
+<h1>{{StoreName}}</h1> <!--interpolation-->
+ <img [src]="StoreLogo" alt="" width="150px" height="150px"> <!-- properity binding -->
+<hr>
+ 
+<h3 *ngIf="!(Discount==isNoDescount) then thenShow else elseShow; " ></h3>
+<ng-template #thenShow>
+    <h2>
+        We offer an explicit discount of:{{Discount|percent}}
+   </h2>
+</ng-template>
+<ng-template #elseShow>
+    <h2>
+        You do not have an Discount
+   </h2>
+</ng-template>
+<br><br> <hr>
+
+
+<select name="Category">
+    <option *ngFor="let category of CategoryList ">
+        {{category.Name}}
+    </option>
+</select>
+<br><br> <hr>
+
+
+<table >
+    <thead>
+        <tr >
+            <th >ID</th>
+            <th >Name</th>
+            <th >Quantity</th>
+            <th >Price</th>
+            <th>img</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of ProductList ">
+            <td>{{product.ID}}</td>
+            <td>{{product.Name}}</td>
+            <td>{{product.Quantity}}</td>
+            <td>{{product.Price}}</td>
+            <td>{{product.img}}</td>
+        </tr>
+
+    </tbody>
+</table>
+<br><br> <hr>
+
+
+<input type="text"  [(ngModel)]="ClientName">
+<span> ClientName is: {{ClientName}}</span>
+
+<br><br>
+<hr>
+
+
+<!-- <input type="button" value="Buy" (click)="isPurchasedChange()" > -->
+
+<div *ngIf="!IsPurshased;  then elsehow; else thenshow; ">
+</div>
+<ng-template #thenshow>
+        <table >
+            <thead>
+                <tr >
+                    <th >ID</th>
+                    <th >Name</th>
+                    <th >Quantity</th>
+                    <th >Price</th>
+                    <th>img</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of ProductList ">
+                    <td>{{product.ID}}</td>
+                    <td>{{product.Name}}</td>
+                    <td>{{product.Quantity}}</td>
+                    <td>{{product.Price}}</td>
+                    <td>{{product.img}}</td>
+
+                </tr>
+        
+            </tbody>
+        </table>
+    <input type="button" value="Buy" (click)="isPurchasedChange()" >
+
+</ng-template>
+
+<ng-template #elsehow>
+    <div>Thanks for purchasing from our Store: {{ClientName}}</div>
+</ng-template>
+
+<br>
+<hr>
+<h2>
+{{StoreName | uppercase}}
+<br>
+{{Discount | percent}}
+</h2>
+<pre>
+
+
+
+</pre>

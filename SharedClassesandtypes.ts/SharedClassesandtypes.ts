@@ -1,4 +1,4 @@
-interface IProduct{
+export interface IProduct{
     ID: number;
     Name: string;
     Quantity: number;
@@ -7,12 +7,12 @@ interface IProduct{
 
 }
 
-interface ICategory{
+export interface ICategory{
     ID: number;
     Name: string;
 }
 
-enum DiscountOffers {
+export enum DiscountOffers {
     NoDiscount ,
      "10%",
      "15%",
