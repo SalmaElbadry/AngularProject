@@ -40,6 +40,7 @@ export class ProductComponent implements OnInit {
   }
 
   isNoDescount=DiscountOffers['NoDiscount'];
+  
 
   isPurchasedChange()
   {
