@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {IProduct, ICategory, DiscountOffers} from 'SharedClassesandtypes.ts/SharedClassesandtypes'
+import {IProduct, ICategory, DiscountOffers} from 'SharedClassesandtypes/SharedClassesandtypes';
+import {ProductServiceService} from '../Services/product-service.service';
+
 
 @Component({
   selector: 'app-product',
@@ -8,14 +10,14 @@ import {IProduct, ICategory, DiscountOffers} from 'SharedClassesandtypes.ts/Shar
 })
 export class ProductComponent implements OnInit {
 
-  constructor() {
+  constructor(private ProductService : ProductServiceService) {
     this.Discount= DiscountOffers.NoDiscount ;
     this.StoreName= "Fashion Store"
     this.StoreLogo='assets/img/images 1.jpeg';
     this.ProductList= [
-      {ID: 1, Name:"salma",Quantity:10, Price: 100, img:'assets/img/images 1.jpeg'},
-      {ID: 2, Name:"mai",Quantity:5, Price: 200, img:'assets/img/images 1.jpeg'}
-
+      {ID: 1, Name:"product 1",Quantity:10, Price: 100, img:'assets/img/images 1.jpeg'},
+      {ID: 2, Name:"product 2",Quantity:5, Price: 200, img:'assets/img/images 1.jpeg'},
+      {ID: 3, Name:"product 3",Quantity:5, Price: 200, img:'assets/img/images 1.jpeg'}
 
     ];
     
@@ -36,8 +38,6 @@ export class ProductComponent implements OnInit {
   ClientName: string;
   IsPurshased: boolean;
   
-  ngOnInit(): void {
-  }
 
   isNoDescount=DiscountOffers['NoDiscount'];
   
@@ -47,6 +47,18 @@ export class ProductComponent implements OnInit {
       if(this.IsPurshased==true){
         this.IsPurshased=false;
       }
+  }
+
+  productList:any;  
+   ProductID:any;  
+  ngOnInit(): void {
+    this.productList=this.ProductService.GetAllProducts();
+    this.ProductID=this.ProductService.GetProductById(2);
+
+  }
+
+  renderValues(){
+    return this.productList=this.ProductService.GetAllProducts();
   }
 
 }
